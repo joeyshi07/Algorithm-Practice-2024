@@ -25,12 +25,12 @@ function returnInput(input) {
 function rockPaperScissors(input) {
   const random = Math.floor(Math.random() * 100);
   let opponentChoice;
-  let outcome;
+  let outcome; //gets random number from 1 to 100, assigning numerical values to rock, paper, and scissors based on how it divided into 3 and 2, and then it compared the random value generated to the input value to determine the winner
 
   for (let i = 0; i <= random; i++) {
-    //iteration
+    //iteration - keep playing more than once
     if (i % 3 == 0) {
-      //selection
+      //selection - determining what out of RPS it is
       opponentChoice = "rock";
     } else if (i % 2 == 0) {
       opponentChoice = "paper";
@@ -79,6 +79,7 @@ function rockPaperScissors(input) {
 }
 
 function getHistory() {
+  //counts the amount of wins losses and draws, appends such amount
   DOMSelectors.content.innerHTML = "";
   DOMSelectors.history.innerHTML = "";
   let win = 0;
@@ -86,13 +87,14 @@ function getHistory() {
   let draw = 0;
 
   for (let i = 0; i < history.length; i++) {
+    //iteration
     if (history[i] == "win") {
       win++;
     } else if (history[i] == "lose") {
-      lose++;
+      lose++; //selection
     } else {
       draw++;
-    }
+    } //sequencing
 
     DOMSelectors.history.insertAdjacentHTML(
       "afterbegin",
