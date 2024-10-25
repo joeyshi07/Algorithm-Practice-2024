@@ -27,6 +27,17 @@ function checkSpaces(n, dayOne, dayTwo) {
 //in binary
 // from 2^0 to 2^7 all 1s --> add to 255
 // hexadecimal in base 16 0 to f --> larger range
+function binaryToDecimal(n) {
+  let decimal = 0;
+  for (let i = 0; i < n.length; i++) {
+    if (n[n.length - 1 - i] === "1") {
+      decimal += Math.pow(2, i);
+    }
+  }
+  return decimal;
+}
+console.log(binaryToDecimal("101"));
+console.log(binaryToDecimal("11101"));
 
 function decimalToBinary(n) {
   let binary = "";
@@ -45,5 +56,18 @@ function decimalToBinary(n) {
 console.log(decimalToBinary(5));
 console.log(decimalToBinary(123));
 
+
 //if larger than 128, subtract 2^7 and append 1. do the same with the rest of the powers of 2 until 2^0, where if the number is larger than the valuye of the power, you subtract it from the number and append 1 and if not append 0 and skip to the next digit.
 // for the first index, if it equals 1, append 2^7 otherwise skip to the next. iteratre through the whole thing, subtracting one from the power each time. if it equals 1, add it on to the previous appended until everything gets run through.
+
+function decToBinary(dec) {
+  let binary ="";
+  while (dec > 0) {
+    let remainder = dec % 2;
+    binary = remainder + binary;
+    dec = Math.floor(dec/2);
+  }
+  return binary
+}
+console.log(decToBinary(5));
+console.log(decToBinary(123)));
